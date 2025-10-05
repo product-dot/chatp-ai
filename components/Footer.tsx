@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="text-2xl">😈</div>
-              <span className="font-rifton font-bold text-xl">CHATPERSONA AI</span>
+              <span className="font-bold text-xl">CHATPERSONA AI</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
               Boost your revenue with AI-powered personas that engage your audience and increase your earnings by 10x.

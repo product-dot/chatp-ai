@@ -70,12 +70,24 @@ The landing page is built with modularity in mind. Each section is a separate co
 
 ## Deployment
 
+### Deploy to Vercel (Recommended)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/product-dot/chatpersona-ai)
+
+**One-Click Deploy**: Click the button above to deploy directly to Vercel with zero configuration!
+
+### Manual Deployment
+
 The project is ready for deployment on Vercel, Netlify, or any other Next.js hosting platform.
 
 ```bash
 npm run build
 npm start
 ```
+
+### Environment Variables
+
+**No environment variables required!** This is a static Next.js website that works out of the box.
 
 ## License
 

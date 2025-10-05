@@ -2,18 +2,21 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Personas() {
   const [selectedPersona, setSelectedPersona] = useState<{name: string, description: string, image: string} | null>(null);
-  const [hoveredWomenPersona, setHoveredWomenPersona] = useState<{name: string, description: string, image: string} | null>(null);
-  const [hoveredMenPersona, setHoveredMenPersona] = useState<{name: string, description: string, image: string} | null>(null);
-  const [hoveredLgbtqPersona, setHoveredLgbtqPersona] = useState<{name: string, description: string, image: string} | null>(null);
+  const [clickedWomenPersona, setClickedWomenPersona] = useState<{name: string, description: string, image: string} | null>(null);
+  const [clickedMenPersona, setClickedMenPersona] = useState<{name: string, description: string, image: string} | null>(null);
+  const [clickedLgbtqPersona, setClickedLgbtqPersona] = useState<{name: string, description: string, image: string} | null>(null);
   
   // Refs for carousel containers
   const womenCarouselRef = useRef<HTMLDivElement>(null);
   const menCarouselRef = useRef<HTMLDivElement>(null);
   const lgbtqCarouselRef = useRef<HTMLDivElement>(null);
+
+  // Auto-play state
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   // Carousel control functions
   const scrollCarousel = (carouselRef: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
@@ -30,6 +33,52 @@ export default function Personas() {
       });
     }
   };
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const autoScroll = (carouselRef: React.RefObject<HTMLDivElement>) => {
+      if (carouselRef.current) {
+        const currentScroll = carouselRef.current.scrollLeft;
+        const maxScroll = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
+        
+        if (currentScroll >= maxScroll) {
+          carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          carouselRef.current.scrollTo({ 
+            left: currentScroll + 300, 
+            behavior: 'smooth' 
+          });
+        }
+      }
+    };
+
+    const autoScrollMen = (carouselRef: React.RefObject<HTMLDivElement>) => {
+      if (carouselRef.current) {
+        const currentScroll = carouselRef.current.scrollLeft;
+        const maxScroll = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
+        
+        if (currentScroll <= 0) {
+          carouselRef.current.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+          carouselRef.current.scrollTo({ 
+            left: currentScroll - 300, 
+            behavior: 'smooth' 
+          });
+        }
+      }
+    };
+
+    const scrollAllCarousels = () => {
+      autoScroll(womenCarouselRef);
+      autoScrollMen(menCarouselRef);
+      autoScroll(lgbtqCarouselRef);
+    };
+
+    const interval = setInterval(scrollAllCarousels, 3000); // Auto-scroll every 3 seconds
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
 
   const personaCategories = {
@@ -106,116 +155,25 @@ export default function Personas() {
 
 
   return (
-    <section id="personas" className="py-20 relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 gradient-bg"></div>
-      
-      {/* Blow Paint Gradient Blobs */}
+    <section id="personas" className="py-20 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      {/* Futuristic Background Elements */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        {/* Purple Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, 40, -25, 0],
-            y: [0, -30, 25, 0],
-            scale: [1, 1.2, 0.8, 1],
-            rotate: [0, 20, -15, 0]
-          }}
-          transition={{ 
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-32 left-16 w-40 h-48 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(139, 69, 19, 0.30) 0%, rgba(147, 51, 234, 0.20) 50%, transparent 100%)',
-            borderRadius: '70% 30% 60% 40% / 40% 70% 30% 60%',
-            filter: 'blur(60px)'
-          }}
-        />
         
-        {/* Green Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, -35, 45, 0],
-            y: [0, 40, -25, 0],
-            scale: [1, 0.9, 1.3, 1],
-            rotate: [0, -25, 30, 0]
-          }}
-          transition={{ 
-            duration: 24,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-20 right-24 w-48 h-44 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.30) 0%, rgba(34, 197, 94, 0.20) 50%, transparent 100%)',
-            borderRadius: '50% 50% 80% 20% / 60% 40% 60% 40%',
-            filter: 'blur(55px)'
-          }}
-        />
+        {/* Parallax Layers */}
+        <div className="absolute inset-0 parallax-bg">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-full blur-lg animate-bounce"></div>
+        </div>
         
-        {/* Orange Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, 25, -40, 0],
-            y: [0, -35, 30, 0],
-            scale: [1, 1.1, 0.9, 1],
-            rotate: [0, 35, -20, 0]
-          }}
-          transition={{ 
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-32 left-1/4 w-40 h-36 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(249, 115, 22, 0.30) 0%, rgba(249, 115, 22, 0.20) 50%, transparent 100%)',
-            borderRadius: '40% 60% 70% 30% / 50% 50% 50% 50%',
-            filter: 'blur(50px)'
-          }}
-        />
+        <div className="absolute inset-0 parallax-mid">
+          <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
+        </div>
         
-        {/* Pink Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, -45, 30, 0],
-            y: [0, 25, -40, 0],
-            scale: [1, 0.8, 1.2, 1],
-            rotate: [0, -30, 25, 0]
-          }}
-          transition={{ 
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-20 right-1/3 w-36 h-32 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, rgba(236, 72, 153, 0.15) 50%, transparent 100%)',
-            borderRadius: '60% 40% 50% 50% / 70% 30% 70% 30%',
-            filter: 'blur(45px)'
-          }}
-        />
+        {/* Tech Aesthetic Elements */}
+        <div className="absolute inset-0 circuit-pattern"></div>
         
-        {/* Blue Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, 35, -20, 0],
-            y: [0, -20, 35, 0],
-            scale: [1, 1.3, 0.7, 1],
-            rotate: [0, 15, -25, 0]
-          }}
-          transition={{ 
-            duration: 16,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-52 h-48 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.20) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 100%)',
-            borderRadius: '30% 70% 40% 60% / 60% 40% 80% 20%',
-            filter: 'blur(65px)'
-          }}
-        />
+        {/* Holographic Overlay */}
+        <div className="absolute inset-0 holographic-overlay"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
@@ -225,14 +183,20 @@ export default function Personas() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="heading-secondary gradient-text mb-4">Choose Your Perfect Persona</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
-            Select from our diverse collection of AI personas, each trained to engage your audience authentically and boost your revenue.
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent staggered-text">
+              Choose Your AI
+            </span>
+            <br />
+            <span className="text-gray-800 staggered-text">Persona</span>
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-4 staggered-text">
+            Advanced AI personalities trained on successful creator strategies. Each persona is designed to engage your audience authentically and boost your revenue.
           </p>
-          <p className="text-sm text-gray-500 max-w-3xl mx-auto">
-            💡 <strong>Tip:</strong> Use the arrow buttons to navigate through the personas
+          <p className="text-sm text-gray-500 max-w-3xl mx-auto staggered-text">
+            <strong>Tip:</strong> Use the arrow buttons to navigate through the personas
           </p>
         </motion.div>
 
@@ -247,12 +211,12 @@ export default function Personas() {
         >
           {/* Women Personas Carousel */}
           <div>
-            <h3 className="text-2xl font-rifton font-bold text-gray-800 mb-6 text-center">Women Personas</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Women Personas</h3>
             <div className="personas-carousel-container overflow-hidden relative">
               {/* Arrow Buttons */}
               <button
                 onClick={() => scrollCarousel(womenCarouselRef, 'left')}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
                 aria-label="Scroll left"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -261,7 +225,7 @@ export default function Personas() {
               </button>
               <button
                 onClick={() => scrollCarousel(womenCarouselRef, 'right')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
                 aria-label="Scroll right"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -278,27 +242,31 @@ export default function Personas() {
                   width: '100%',
                   maxWidth: '100%'
                 }}
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                onMouseLeave={() => setIsAutoPlaying(true)}
               >
                 {[...personaCategories.women.personas, ...personaCategories.women.personas].map((persona, index) => (
                   <motion.div
                     key={`women-${persona.name}-${index}`}
-                    className="group cursor-pointer flex-shrink-0 w-64"
-                    onMouseEnter={() => setHoveredWomenPersona({name: persona.name, description: persona.description, image: persona.image})}
-                    onMouseLeave={() => setHoveredWomenPersona(null)}
-                    onClick={() => setSelectedPersona({name: persona.name, description: persona.description, image: persona.image})}
+                    className="group cursor-pointer flex-shrink-0 w-64 staggered-card persona-card-clickable persona-click-hint"
+                    onClick={() => {
+                      setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
+                      setClickedWomenPersona({name: persona.name, description: persona.description, image: persona.image});
+                    }}
                   >
-                    <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 h-full flex flex-col">
+                    <div className="relative overflow-hidden rounded-2xl futuristic-card depth-card h-full flex flex-col">
                       <div className="aspect-square relative flex-shrink-0">
                         <Image
                           src={persona.image}
                           alt={persona.name}
                           fill
+                          sizes="(max-width: 768px) 200px, (max-width: 1024px) 250px, 200px"
                           className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                       <div className="p-4 text-center flex-grow flex items-center justify-center">
-                        <h3 className="font-rifton font-bold text-lg text-gray-900">{persona.name}</h3>
+                        <h3 className="font-bold text-lg text-gray-900">{persona.name}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -307,7 +275,7 @@ export default function Personas() {
             </div>
             
             {/* Women Persona Description */}
-            {hoveredWomenPersona && (
+            {clickedWomenPersona && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -318,19 +286,19 @@ export default function Personas() {
                   <div className="flex items-start gap-6">
                     <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
                       <Image
-                        src={hoveredWomenPersona.image}
-                        alt={hoveredWomenPersona.name}
+                        src={clickedWomenPersona.image}
+                        alt={clickedWomenPersona.name}
                         width={80}
                         height={80}
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-rifton font-bold text-xl text-gray-900 mb-2">
-                        {hoveredWomenPersona.name}
+                      <h3 className="font-bold text-xl text-gray-900 mb-2">
+                        {clickedWomenPersona.name}
                       </h3>
-                      <p className="text-gray-600 font-rifton leading-relaxed">
-                        {hoveredWomenPersona.description}
+                      <p className="text-gray-600 leading-relaxed">
+                        {clickedWomenPersona.description}
                       </p>
                     </div>
                   </div>
@@ -341,12 +309,12 @@ export default function Personas() {
 
           {/* Men Personas Carousel */}
           <div>
-            <h3 className="text-2xl font-rifton font-bold text-gray-800 mb-6 text-center">Men Personas</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Men Personas</h3>
             <div className="personas-carousel-container overflow-hidden relative">
               {/* Arrow Buttons */}
               <button
                 onClick={() => scrollCarousel(menCarouselRef, 'left')}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
                 aria-label="Scroll left"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -355,7 +323,7 @@ export default function Personas() {
               </button>
               <button
                 onClick={() => scrollCarousel(menCarouselRef, 'right')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
                 aria-label="Scroll right"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -372,27 +340,31 @@ export default function Personas() {
                   width: '100%',
                   maxWidth: '100%'
                 }}
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                onMouseLeave={() => setIsAutoPlaying(true)}
               >
                 {[...personaCategories.men.personas, ...personaCategories.men.personas].map((persona, index) => (
                   <motion.div
                     key={`men-${persona.name}-${index}`}
-                    className="group cursor-pointer flex-shrink-0 w-64"
-                    onMouseEnter={() => setHoveredMenPersona({name: persona.name, description: persona.description, image: persona.image})}
-                    onMouseLeave={() => setHoveredMenPersona(null)}
-                    onClick={() => setSelectedPersona({name: persona.name, description: persona.description, image: persona.image})}
+                    className="group cursor-pointer flex-shrink-0 w-64 staggered-card persona-card-clickable persona-click-hint"
+                    onClick={() => {
+                      setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
+                      setClickedMenPersona({name: persona.name, description: persona.description, image: persona.image});
+                    }}
                   >
-                    <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 h-full flex flex-col">
+                    <div className="relative overflow-hidden rounded-2xl futuristic-card depth-card h-full flex flex-col">
                       <div className="aspect-square relative flex-shrink-0">
                         <Image
                           src={persona.image}
                           alt={persona.name}
                           fill
+                          sizes="(max-width: 768px) 200px, (max-width: 1024px) 250px, 200px"
                           className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                       <div className="p-4 text-center flex-grow flex items-center justify-center">
-                        <h3 className="font-rifton font-bold text-lg text-gray-900">{persona.name}</h3>
+                        <h3 className="font-bold text-lg text-gray-900">{persona.name}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -401,7 +373,7 @@ export default function Personas() {
             </div>
             
             {/* Men Persona Description */}
-            {hoveredMenPersona && (
+            {clickedMenPersona && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -412,19 +384,19 @@ export default function Personas() {
                   <div className="flex items-start gap-6">
                     <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
                       <Image
-                        src={hoveredMenPersona.image}
-                        alt={hoveredMenPersona.name}
+                        src={clickedMenPersona.image}
+                        alt={clickedMenPersona.name}
                         width={80}
                         height={80}
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-rifton font-bold text-xl text-gray-900 mb-2">
-                        {hoveredMenPersona.name}
+                      <h3 className="font-bold text-xl text-gray-900 mb-2">
+                        {clickedMenPersona.name}
                       </h3>
-                      <p className="text-gray-600 font-rifton leading-relaxed">
-                        {hoveredMenPersona.description}
+                      <p className="text-gray-600 leading-relaxed">
+                        {clickedMenPersona.description}
                       </p>
                     </div>
                   </div>
@@ -435,12 +407,12 @@ export default function Personas() {
 
           {/* LGBTQ+ Personas Carousel */}
           <div>
-            <h3 className="text-2xl font-rifton font-bold text-gray-800 mb-6 text-center">LGBTQ+ Personas</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">LGBTQ+ Personas</h3>
             <div className="personas-carousel-container overflow-hidden relative">
               {/* Arrow Buttons */}
               <button
                 onClick={() => scrollCarousel(lgbtqCarouselRef, 'left')}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
                 aria-label="Scroll left"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -449,7 +421,7 @@ export default function Personas() {
               </button>
               <button
                 onClick={() => scrollCarousel(lgbtqCarouselRef, 'right')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
                 aria-label="Scroll right"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -466,27 +438,31 @@ export default function Personas() {
                   width: '100%',
                   maxWidth: '100%'
                 }}
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                onMouseLeave={() => setIsAutoPlaying(true)}
               >
                 {[...personaCategories.lgbtq.personas, ...personaCategories.lgbtq.personas].map((persona, index) => (
                   <motion.div
                     key={`lgbtq-${persona.name}-${index}`}
-                    className="group cursor-pointer flex-shrink-0 w-64"
-                    onMouseEnter={() => setHoveredLgbtqPersona({name: persona.name, description: persona.description, image: persona.image})}
-                    onMouseLeave={() => setHoveredLgbtqPersona(null)}
-                    onClick={() => setSelectedPersona({name: persona.name, description: persona.description, image: persona.image})}
+                    className="group cursor-pointer flex-shrink-0 w-64 staggered-card persona-card-clickable persona-click-hint"
+                    onClick={() => {
+                      setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
+                      setClickedLgbtqPersona({name: persona.name, description: persona.description, image: persona.image});
+                    }}
                   >
-                    <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 h-full flex flex-col">
+                    <div className="relative overflow-hidden rounded-2xl futuristic-card depth-card h-full flex flex-col">
                       <div className="aspect-square relative flex-shrink-0">
                         <Image
                           src={persona.image}
                           alt={persona.name}
                           fill
+                          sizes="(max-width: 768px) 200px, (max-width: 1024px) 250px, 200px"
                           className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                       <div className="p-4 text-center flex-grow flex items-center justify-center">
-                        <h3 className="font-rifton font-bold text-lg text-gray-900">{persona.name}</h3>
+                        <h3 className="font-bold text-lg text-gray-900">{persona.name}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -495,7 +471,7 @@ export default function Personas() {
             </div>
             
             {/* LGBTQ+ Persona Description */}
-            {hoveredLgbtqPersona && (
+            {clickedLgbtqPersona && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -506,19 +482,19 @@ export default function Personas() {
                   <div className="flex items-start gap-6">
                     <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
                       <Image
-                        src={hoveredLgbtqPersona.image}
-                        alt={hoveredLgbtqPersona.name}
+                        src={clickedLgbtqPersona.image}
+                        alt={clickedLgbtqPersona.name}
                         width={80}
                         height={80}
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-rifton font-bold text-xl text-gray-900 mb-2">
-                        {hoveredLgbtqPersona.name}
+                      <h3 className="font-bold text-xl text-gray-900 mb-2">
+                        {clickedLgbtqPersona.name}
                       </h3>
-                      <p className="text-gray-600 font-rifton leading-relaxed">
-                        {hoveredLgbtqPersona.description}
+                      <p className="text-gray-600 leading-relaxed">
+                        {clickedLgbtqPersona.description}
                       </p>
                     </div>
                   </div>
@@ -536,49 +512,15 @@ export default function Personas() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <h3 className="text-2xl font-bold mb-4">Ready to Boost Your Revenue?</h3>
+          <h3 className="text-2xl font-bold mb-4 text-gray-900">Ready to Boost Your Revenue?</h3>
           <p className="text-lg text-gray-600 mb-8">Choose your persona and start earning 10x more today!</p>
-          <button className="btn-primary text-lg px-8 py-4">
-            Get Started Now
+          <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <span className="relative z-10">Get Started Now</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </motion.div>
       </div>
 
-      {/* Persona Description Modal */}
-      {selectedPersona && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-white rounded-2xl max-w-md w-full p-6 relative"
-          >
-            <button
-              onClick={() => setSelectedPersona(null)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold"
-            >
-              ×
-            </button>
-            <div className="text-center">
-              <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
-                <Image
-                  src={selectedPersona.image}
-                  alt={selectedPersona.name}
-                  width={96}
-                  height={96}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="font-rifton font-bold text-2xl text-gray-900 mb-4">
-                {selectedPersona.name}
-              </h3>
-              <p className="text-gray-600 font-rifton leading-relaxed">
-                {selectedPersona.description}
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      )}
     </section>
   );
 }

@@ -55,113 +55,25 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="py-20 relative overflow-hidden" style={{ backgroundColor: '#F8FAFC' }}>
-      {/* Blow Paint Gradient Blobs */}
+    <section id="pricing" className="py-20 relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50">
+      {/* Futuristic Background Elements */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        {/* Purple Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, 35, -25, 0],
-            y: [0, -25, 30, 0],
-            scale: [1, 1.1, 0.9, 1],
-            rotate: [0, 25, -15, 0]
-          }}
-          transition={{ 
-            duration: 19,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-24 left-12 w-36 h-40 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(139, 69, 19, 0.25) 0%, rgba(147, 51, 234, 0.15) 50%, transparent 100%)',
-            borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%',
-            filter: 'blur(50px)'
-          }}
-        />
         
-        {/* Green Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, -30, 40, 0],
-            y: [0, 35, -20, 0],
-            scale: [1, 0.8, 1.2, 1],
-            rotate: [0, -30, 20, 0]
-          }}
-          transition={{ 
-            duration: 21,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-40 right-20 w-44 h-36 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.25) 0%, rgba(34, 197, 94, 0.15) 50%, transparent 100%)',
-            borderRadius: '40% 60% 50% 50% / 70% 30% 70% 30%',
-            filter: 'blur(45px)'
-          }}
-        />
+        {/* Parallax Layers */}
+        <div className="absolute inset-0 parallax-bg">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-full blur-lg animate-bounce"></div>
+        </div>
         
-        {/* Orange Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, 20, -35, 0],
-            y: [0, -30, 25, 0],
-            scale: [1, 1.3, 0.7, 1],
-            rotate: [0, 40, -25, 0]
-          }}
-          transition={{ 
-            duration: 17,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-40 left-1/3 w-36 h-28 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, rgba(249, 115, 22, 0.15) 50%, transparent 100%)',
-            borderRadius: '50% 50% 80% 20% / 40% 70% 30% 60%',
-            filter: 'blur(40px)'
-          }}
-        />
+        <div className="absolute inset-0 parallax-mid">
+          <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
+        </div>
         
-        {/* Pink Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, -40, 25, 0],
-            y: [0, 20, -35, 0],
-            scale: [1, 0.9, 1.1, 1],
-            rotate: [0, -35, 30, 0]
-          }}
-          transition={{ 
-            duration: 23,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-24 right-1/4 w-48 h-40 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(236, 72, 153, 0.20) 0%, rgba(236, 72, 153, 0.12) 50%, transparent 100%)',
-            borderRadius: '30% 70% 50% 50% / 70% 30% 70% 30%',
-            filter: 'blur(55px)'
-          }}
-        />
+        {/* Tech Aesthetic Elements */}
+        <div className="absolute inset-0 circuit-pattern"></div>
         
-        {/* Blue Blow Paint */}
-        <motion.div
-          animate={{ 
-            x: [0, 30, -20, 0],
-            y: [0, -25, 30, 0],
-            scale: [1, 1.2, 0.8, 1],
-            rotate: [0, 20, -30, 0]
-          }}
-          transition={{ 
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-52 h-44 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(6, 182, 212, 0.10) 50%, transparent 100%)',
-            borderRadius: '25% 75% 35% 65% / 65% 35% 75% 25%',
-            filter: 'blur(60px)'
-          }}
-        />
+        {/* Holographic Overlay */}
+        <div className="absolute inset-0 holographic-overlay"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
@@ -173,8 +85,14 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="heading-secondary gradient-text mb-4">Simple, Transparent Pricing</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent staggered-text">
+              Simple, Transparent
+            </span>
+            <br />
+            <span className="text-gray-800 staggered-text">Pricing</span>
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto staggered-text">
             Choose the plan that fits your needs. All plans include our core AI features and OnlyFans integration.
           </p>
         </motion.div>
@@ -188,19 +106,16 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className={`relative rounded-2xl border-2 ${plan.color} shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col ${
+              className={`relative rounded-2xl border-2 ${plan.popular ? 'border-purple-300 bg-gradient-to-br from-purple-50 to-blue-50' : 'border-gray-200 bg-white/80'} backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col ${
                 plan.popular ? 'scale-105' : ''
               }`}
               style={{ 
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
                 minHeight: '500px'
               }}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-cp-purple text-white px-4 py-2 rounded-full text-sm font-bold flex items-center">
+                  <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center shadow-lg">
                     <Star className="w-4 h-4 mr-1" />
                     Most Popular
                   </div>
@@ -228,8 +143,8 @@ export default function Pricing() {
 
                 <button className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 mt-auto ${
                   plan.popular
-                    ? 'bg-cp-purple text-white hover:bg-purple-700'
-                    : 'bg-cp-green text-black hover:bg-green-300'
+                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg transform hover:scale-105'
+                    : 'bg-white text-purple-600 border-2 border-purple-200 hover:bg-purple-50 hover:border-purple-300'
                 }`}>
                   {plan.cta}
                 </button>
@@ -246,14 +161,14 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-cp-blue/55 via-pink-500/55 to-cp-green/55 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">7 Day Free Trial 💯</h3>
+          <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-2xl p-8 text-white shadow-2xl">
+            <h3 className="text-2xl font-bold mb-4">7 Day Free Trial</h3>
             <p className="text-lg mb-6">
               Experience the benefits with our 7 day free trial.
               <br />
               <strong>No Credit Card Required!</strong>
             </p>
-            <button className="bg-white text-cp-purple font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-purple-600 font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
               Start Free Trial
             </button>
           </div>

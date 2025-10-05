@@ -68,10 +68,10 @@ export default function Hero() {
             className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
           >
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              AI-Powered Creator
+              AI-Powered OnlyFans
             </span>
             <br />
-            <span className="text-gray-800">Automation</span>
+            <span className="text-gray-800">Chatting</span>
           </motion.h1>
 
           {/* Subheadline */}

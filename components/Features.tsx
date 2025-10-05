@@ -127,29 +127,29 @@ export default function Features() {
         <div className="absolute inset-0 holographic-overlay"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 relative z-20">
+        {/* Section Header - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent staggered-text">
               Advanced AI
             </span>
             <br />
             <span className="text-gray-800 staggered-text">Features</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto staggered-text">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto staggered-text px-2">
             Powered by cutting-edge machine learning algorithms trained on successful creator strategies
           </p>
         </motion.div>
 
-        {/* Dynamic Main Features with Advanced Animations */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        {/* Dynamic Main Features with Advanced Animations - Mobile optimized */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {features.map((feature, index) => {
             const IconComponent = feature.icon === "TrendingUp" ? TrendingUp : 
                                  feature.icon === "DollarSign" ? DollarSign : 
@@ -169,7 +169,7 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="group relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2"
+                className="group relative bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2"
                 whileHover={{ 
                   rotateY: 5,
                   rotateX: 5,
@@ -220,9 +220,9 @@ export default function Features() {
                 </div>
                 
                 <div className="relative z-10 text-center">
-                  {/* Animated Icon Container */}
+                  {/* Animated Icon Container - Mobile optimized */}
                   <motion.div 
-                    className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${feature.color} text-white mb-6 shadow-xl`}
+                    className={`inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${feature.color} text-white mb-4 sm:mb-6 shadow-xl`}
                     whileHover={{ 
                       rotate: 360,
                       scale: 1.1,
@@ -241,19 +241,19 @@ export default function Features() {
                       animate={{ rotate: [0, 10, -10, 0] }}
                       transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
                     >
-                      <IconComponent className="w-10 h-10" />
+                      <IconComponent className="w-8 h-8 sm:w-10 sm:h-10" />
                     </motion.div>
                   </motion.div>
                   
-                  {/* Animated Counter */}
+                  {/* Animated Counter - Mobile optimized */}
                   <motion.div 
-                    className="mb-4"
+                    className="mb-3 sm:mb-4"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
+                    <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-1 sm:mb-2">
                       <motion.span
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -262,16 +262,16 @@ export default function Features() {
                       >
                         {metrics[index].value}
                       </motion.span>
-                      <span className="text-2xl text-gray-500">{metrics[index].suffix}</span>
+                      <span className="text-xl sm:text-2xl text-gray-500">{metrics[index].suffix}</span>
                     </div>
-                    <div className="text-sm text-gray-500 font-medium">{metrics[index].label}</div>
+                    <div className="text-xs sm:text-sm text-gray-500 font-medium">{metrics[index].label}</div>
                   </motion.div>
                   
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
                     {feature.title}
                   </h3>
                   
-                  <p className="text-gray-600 leading-relaxed mb-4">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3 sm:mb-4">
                     {feature.description}
                   </p>
                   
@@ -313,17 +313,17 @@ export default function Features() {
           })}
         </div>
 
-        {/* Demo Image Section */}
+        {/* Demo Image Section - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
         >
-          {/* Enhanced Image Container with Better Proportions */}
+          {/* Enhanced Image Container with Better Proportions - Mobile optimized */}
           <motion.div 
-            className="relative mb-8 max-w-5xl mx-auto"
+            className="relative mb-6 sm:mb-8 max-w-5xl mx-auto px-2 sm:px-0"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -331,58 +331,58 @@ export default function Features() {
             whileHover={{ scale: 1.01 }}
             style={{ transition: "transform 0.3s ease" }}
           >
-            {/* Subtle Background Container */}
-            <div className="relative bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 rounded-3xl p-4 md:p-6 shadow-xl border border-gray-200/50">
+            {/* Subtle Background Container - Mobile optimized */}
+            <div className="relative bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 shadow-xl border border-gray-200/50">
               {/* Main Image Container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl bg-white">
                 <Image
                   src="/assets/features.avif"
                   alt="ChatPersona AI Features Demo"
                   width={1000}
                   height={750}
-                  className="w-full h-auto rounded-2xl hover:shadow-3xl transition-all duration-300"
+                  className="w-full h-auto rounded-xl sm:rounded-2xl hover:shadow-3xl transition-all duration-300"
                   priority
                 />
                 {/* Subtle overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-xl sm:rounded-2xl"></div>
                 
-                {/* Floating Feature Highlights */}
+                {/* Floating Feature Highlights - Mobile optimized */}
                 <motion.div
-                  className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-gray-200"
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 sm:px-3 sm:py-2 shadow-lg border border-gray-200"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-gray-700">Live Demo</span>
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs sm:text-sm font-medium text-gray-700">Live Demo</span>
                   </div>
                 </motion.div>
                 
                 <motion.div
-                  className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-gray-200"
+                  className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 sm:px-3 sm:py-2 shadow-lg border border-gray-200"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 1.0 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-gray-700">AI Powered</span>
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs sm:text-sm font-medium text-gray-700">AI Powered</span>
                   </div>
                 </motion.div>
               </div>
               
-              {/* Decorative Elements */}
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full opacity-60 animate-pulse"></div>
-              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-green-400 to-cyan-400 rounded-full opacity-60 animate-bounce"></div>
+              {/* Decorative Elements - Mobile optimized */}
+              <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full opacity-60 animate-pulse"></div>
+              <div className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-green-400 to-cyan-400 rounded-full opacity-60 animate-bounce"></div>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Dynamic Benefits Grid with Expandable Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 items-start">
+        {/* Dynamic Benefits Grid with Expandable Cards - Mobile optimized */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 items-start">
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon === "Cpu" ? Cpu : 
                                  benefit.icon === "Rocket" ? Rocket : 
@@ -400,7 +400,7 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className="group relative bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 text-center cursor-pointer hover:border-purple-300/50 h-fit"
+                className="group relative bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 text-center cursor-pointer hover:border-purple-300/50 h-fit touch-manipulation"
                 whileHover={{ 
                   rotateY: 3,
                   rotateX: 3,
@@ -457,10 +457,10 @@ export default function Features() {
                   ))}
                 </div>
                 
-                <div className="relative z-10 p-6 card-content min-h-fit">
-                  {/* Enhanced Icon with 3D Rotation */}
+                <div className="relative z-10 p-4 sm:p-6 card-content min-h-fit">
+                  {/* Enhanced Icon with 3D Rotation - Mobile optimized */}
                   <motion.div 
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 text-white mb-6 shadow-xl mx-auto"
+                    className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 text-white mb-4 sm:mb-6 shadow-xl mx-auto"
                     whileHover={{ 
                       rotateY: 180,
                       scale: 1.15,
@@ -486,21 +486,21 @@ export default function Features() {
                         delay: index * 0.3 
                       }}
                     >
-                      <IconComponent className="w-10 h-10" />
+                      <IconComponent className="w-8 h-8 sm:w-10 sm:h-10" />
                     </motion.div>
                   </motion.div>
                   
-                  <h4 className="text-lg font-bold mb-3 text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                  <h4 className="text-base sm:text-lg font-bold mb-2 sm:mb-3 text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
                     {benefit.title}
                   </h4>
                   
-                  <p className="text-gray-600 leading-relaxed mb-4 text-sm">
+                  <p className="text-gray-600 leading-relaxed mb-3 sm:mb-4 text-xs sm:text-sm">
                     {benefit.description}
                   </p>
                   
-                  {/* Expand/Collapse Button with Click Indicator */}
+                  {/* Expand/Collapse Button with Click Indicator - Mobile optimized */}
                   <motion.div 
-                    className="flex items-center justify-center space-x-2 text-xs mb-4 group"
+                    className="flex items-center justify-center space-x-1 sm:space-x-2 text-xs mb-3 sm:mb-4 group"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
@@ -518,19 +518,19 @@ export default function Features() {
                         delay: index * 0.4
                       }}
                     />
-                    <span className="text-gray-500 font-medium">Active</span>
+                    <span className="text-gray-500 font-medium text-xs">Active</span>
                     <motion.div
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                       className="group-hover:scale-110 transition-transform duration-200"
                     >
                       {isExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-purple-500" />
+                        <ChevronUp className="w-3 h-3 sm:w-4 sm:h-4 text-purple-500" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 text-purple-500" />
+                        <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 text-purple-500" />
                       )}
                     </motion.div>
-                    <span className="text-xs text-gray-400 group-hover:text-purple-500 transition-colors duration-200">
+                    <span className="text-xs text-gray-400 group-hover:text-purple-500 transition-colors duration-200 hidden sm:inline">
                       {isExpanded ? 'Click to collapse' : 'Click to expand'}
                     </span>
                   </motion.div>
@@ -546,25 +546,25 @@ export default function Features() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pt-4 border-t border-gray-200">
-                          <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                        <div className="pt-3 sm:pt-4 border-t border-gray-200">
+                          <p className="text-gray-700 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
                             {benefit.expandedContent}
                           </p>
                           
-                          {/* Feature List */}
-                          <div className="space-y-2">
-                            <h5 className="text-sm font-semibold text-gray-800 mb-2">Key Features:</h5>
-                            <div className="grid grid-cols-1 gap-2">
+                          {/* Feature List - Mobile optimized */}
+                          <div className="space-y-1 sm:space-y-2">
+                            <h5 className="text-xs sm:text-sm font-semibold text-gray-800 mb-1 sm:mb-2">Key Features:</h5>
+                            <div className="grid grid-cols-1 gap-1 sm:gap-2">
                               {benefit.features.map((feature, featureIndex) => (
                                 <motion.div
                                   key={featureIndex}
                                   initial={{ opacity: 0, x: -10 }}
                                   animate={{ opacity: 1, x: 0 }}
                                   transition={{ duration: 0.3, delay: featureIndex * 0.1 }}
-                                  className="flex items-center space-x-2 text-xs text-gray-600"
+                                  className="flex items-center space-x-1 sm:space-x-2 text-xs text-gray-600"
                                 >
-                                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full flex-shrink-0"></div>
-                                  <span>{feature}</span>
+                                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-500 rounded-full flex-shrink-0"></div>
+                                  <span className="text-xs">{feature}</span>
                                 </motion.div>
                               ))}
                             </div>
@@ -589,36 +589,36 @@ export default function Features() {
           })}
         </div>
 
-        {/* Installation & Usage Steps - New Design */}
+        {/* Installation & Usage Steps - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <div className="text-center mb-12">
-            <h3 className="heading-secondary gradient-text mb-4">Get Started with ChatPersona AI</h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">Get Started with ChatPersona AI</h3>
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-2">
               Follow these simple steps to transform your OnlyFans revenue with AI-powered conversations
             </p>
           </div>
 
-          {/* Step Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Step Cards Grid - Mobile optimized */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Step 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-cp-purple to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-cp-purple to-purple-600 rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold mx-auto mb-3 sm:mb-4">
                 1
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-3">Download Extension</h4>
-              <p className="text-gray-600 text-sm mb-4">Get the ChatPersona AI extension from Chrome Web Store</p>
+              <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Download Extension</h4>
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">Get the ChatPersona AI extension from Chrome Web Store</p>
               <div className="flex flex-wrap gap-1 justify-center">
                 <span className="px-2 py-1 bg-blue-500/10 text-blue-600 rounded-full text-xs">Chrome Store</span>
               </div>
@@ -630,13 +630,13 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-cp-green to-green-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-cp-green to-green-600 rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold mx-auto mb-3 sm:mb-4">
                 2
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-3">Sign Up</h4>
-              <p className="text-gray-600 text-sm mb-4">Create your account on <a href="https://app.chatpersona.ai" className="text-cp-purple hover:underline font-medium">app.chatpersona.ai</a></p>
+              <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Sign Up</h4>
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">Create your account on <a href="https://app.chatpersona.ai" className="text-cp-purple hover:underline font-medium">app.chatpersona.ai</a></p>
               <div className="space-y-1 text-xs text-gray-500">
                 <div className="flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
@@ -655,13 +655,13 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-cp-orange to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-cp-orange to-orange-600 rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold mx-auto mb-3 sm:mb-4">
                 3
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-3">Connect Account</h4>
-              <p className="text-gray-600 text-sm mb-4">Link your OnlyFans account and configure your preferences</p>
+              <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Connect Account</h4>
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">Link your OnlyFans account and configure your preferences</p>
               <div className="space-y-1 text-xs text-gray-600">
                 <div className="flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-cp-orange rounded-full mr-2"></div>
@@ -680,67 +680,67 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold mx-auto mb-3 sm:mb-4">
                 4
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-3">Start Earning</h4>
-              <p className="text-gray-600 text-sm mb-4">Choose your persona and watch your revenue increase</p>
+              <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Start Earning</h4>
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">Choose your persona and watch your revenue increase</p>
               <div className="grid grid-cols-3 gap-1 text-xs">
                 <div className="text-center">
-                  <div className="w-6 h-6 bg-pink-100 rounded-full mx-auto mb-1"></div>
-                  <span className="text-gray-600">Women</span>
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-pink-100 rounded-full mx-auto mb-1"></div>
+                  <span className="text-gray-600 text-xs">Women</span>
                 </div>
                 <div className="text-center">
-                  <div className="w-6 h-6 bg-blue-100 rounded-full mx-auto mb-1"></div>
-                  <span className="text-gray-600">Men</span>
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-blue-100 rounded-full mx-auto mb-1"></div>
+                  <span className="text-gray-600 text-xs">Men</span>
                 </div>
                 <div className="text-center">
-                  <div className="w-6 h-6 bg-purple-100 rounded-full mx-auto mb-1"></div>
-                  <span className="text-gray-600">LGBTQ+</span>
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-purple-100 rounded-full mx-auto mb-1"></div>
+                  <span className="text-gray-600 text-xs">LGBTQ+</span>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* CTA Section */}
+          {/* CTA Section - Mobile optimized */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
-            className="text-center mt-12"
+            className="text-center mt-8 sm:mt-12"
           >
-            <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-12 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mb-4">
+            <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 sm:px-12 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mb-3 sm:mb-4 w-full sm:w-auto text-base sm:text-lg touch-manipulation">
               <span className="relative z-10">Start Your Free Trial Now</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
-            <p className="text-gray-500 text-sm">Join thousands of creators already earning more with AI</p>
+            <p className="text-gray-500 text-xs sm:text-sm">Join thousands of creators already earning more with AI</p>
           </motion.div>
         </motion.div>
 
 
-        {/* New: Testimonial Quote */}
+        {/* New: Testimonial Quote - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-gray-50 rounded-2xl p-8 mb-16"
+          className="bg-gray-50 rounded-2xl p-4 sm:p-6 lg:p-8 mb-12 sm:mb-16"
         >
           <div className="text-center">
-            <div className="text-4xl text-cp-purple mb-4">"</div>
-            <blockquote className="text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
+            <div className="text-2xl sm:text-4xl text-cp-purple mb-3 sm:mb-4">"</div>
+            <blockquote className="text-base sm:text-lg lg:text-xl text-gray-700 mb-4 sm:mb-6 max-w-3xl mx-auto leading-relaxed">
               "ChatPersona AI completely transformed my revenue. I went from making $500/month to over $5,000/month in just 3 months. The AI responses are so natural, my subscribers can't tell the difference!"
             </blockquote>
-            <div className="flex items-center justify-center space-x-4">
-              <div className="w-12 h-12 bg-cp-purple rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">S</span>
+            <div className="flex items-center justify-center space-x-3 sm:space-x-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cp-purple rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm sm:text-base">S</span>
               </div>
               <div className="text-left">
-                <div className="font-bold text-gray-900">Sarah M.</div>
-                <div className="text-sm text-gray-600">Top 1% OnlyFans Creator</div>
+                <div className="font-bold text-gray-900 text-sm sm:text-base">Sarah M.</div>
+                <div className="text-xs sm:text-sm text-gray-600">Top 1% OnlyFans Creator</div>
               </div>
             </div>
           </div>

@@ -176,66 +176,66 @@ export default function Personas() {
         <div className="absolute inset-0 holographic-overlay"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 relative z-20">
+        {/* Section Header - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent staggered-text">
               Choose Your AI
             </span>
             <br />
             <span className="text-gray-800 staggered-text">Persona</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-4 staggered-text">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-3 sm:mb-4 staggered-text px-2">
             Advanced AI personalities trained on successful creator strategies. Each persona is designed to engage your audience authentically and boost your revenue.
           </p>
-          <p className="text-sm text-gray-500 max-w-3xl mx-auto staggered-text">
+          <p className="text-xs sm:text-sm text-gray-500 max-w-3xl mx-auto staggered-text px-2">
             <strong>Tip:</strong> Use the arrow buttons to navigate through the personas
           </p>
         </motion.div>
 
 
-        {/* Three Separate Carousels */}
+        {/* Three Separate Carousels - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="space-y-12"
+          className="space-y-8 sm:space-y-12"
         >
-          {/* Women Personas Carousel */}
+          {/* Women Personas Carousel - Mobile optimized */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Women Personas</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">Women Personas</h3>
             <div className="personas-carousel-container overflow-hidden relative">
-              {/* Arrow Buttons */}
+              {/* Arrow Buttons - Mobile optimized */}
               <button
                 onClick={() => scrollCarousel(womenCarouselRef, 'left')}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll left"
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 onClick={() => scrollCarousel(womenCarouselRef, 'right')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll right"
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
               
               <div 
                 ref={womenCarouselRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide"
+                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide"
                 style={{ 
                   scrollbarWidth: 'none', 
                   msOverflowStyle: 'none',
@@ -248,7 +248,7 @@ export default function Personas() {
                 {[...personaCategories.women.personas, ...personaCategories.women.personas].map((persona, index) => (
                   <motion.div
                     key={`women-${persona.name}-${index}`}
-                    className="group cursor-pointer flex-shrink-0 w-64 staggered-card persona-card-clickable persona-click-hint"
+                    className="group cursor-pointer flex-shrink-0 w-48 sm:w-56 lg:w-64 staggered-card persona-card-clickable persona-click-hint touch-manipulation"
                     onClick={() => {
                       setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
                       setClickedWomenPersona({name: persona.name, description: persona.description, image: persona.image});
@@ -260,13 +260,13 @@ export default function Personas() {
                           src={persona.image}
                           alt={persona.name}
                           fill
-                          sizes="(max-width: 768px) 200px, (max-width: 1024px) 250px, 200px"
+                          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 256px"
                           className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
-                      <div className="p-4 text-center flex-grow flex items-center justify-center">
-                        <h3 className="font-bold text-lg text-gray-900">{persona.name}</h3>
+                      <div className="p-3 sm:p-4 text-center flex-grow flex items-center justify-center">
+                        <h3 className="font-bold text-base sm:text-lg text-gray-900">{persona.name}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -274,17 +274,17 @@ export default function Personas() {
               </div>
             </div>
             
-            {/* Women Persona Description */}
+            {/* Women Persona Description - Mobile optimized */}
             {clickedWomenPersona && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                className="mt-8"
+                className="mt-6 sm:mt-8"
               >
-                <div className="bg-white rounded-2xl shadow-lg p-6 max-w-4xl mx-auto">
-                  <div className="flex items-start gap-6">
-                    <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 max-w-4xl mx-auto">
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden flex-shrink-0">
                       <Image
                         src={clickedWomenPersona.image}
                         alt={clickedWomenPersona.name}
@@ -294,10 +294,10 @@ export default function Personas() {
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-bold text-xl text-gray-900 mb-2">
+                      <h3 className="font-bold text-lg sm:text-xl text-gray-900 mb-2">
                         {clickedWomenPersona.name}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                         {clickedWomenPersona.description}
                       </p>
                     </div>
@@ -307,33 +307,33 @@ export default function Personas() {
             )}
           </div>
 
-          {/* Men Personas Carousel */}
+          {/* Men Personas Carousel - Mobile optimized */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Men Personas</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">Men Personas</h3>
             <div className="personas-carousel-container overflow-hidden relative">
-              {/* Arrow Buttons */}
+              {/* Arrow Buttons - Mobile optimized */}
               <button
                 onClick={() => scrollCarousel(menCarouselRef, 'left')}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll left"
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 onClick={() => scrollCarousel(menCarouselRef, 'right')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll right"
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
               
               <div 
                 ref={menCarouselRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide"
+                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide"
                 style={{ 
                   scrollbarWidth: 'none', 
                   msOverflowStyle: 'none',
@@ -346,7 +346,7 @@ export default function Personas() {
                 {[...personaCategories.men.personas, ...personaCategories.men.personas].map((persona, index) => (
                   <motion.div
                     key={`men-${persona.name}-${index}`}
-                    className="group cursor-pointer flex-shrink-0 w-64 staggered-card persona-card-clickable persona-click-hint"
+                    className="group cursor-pointer flex-shrink-0 w-48 sm:w-56 lg:w-64 staggered-card persona-card-clickable persona-click-hint touch-manipulation"
                     onClick={() => {
                       setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
                       setClickedMenPersona({name: persona.name, description: persona.description, image: persona.image});
@@ -358,13 +358,13 @@ export default function Personas() {
                           src={persona.image}
                           alt={persona.name}
                           fill
-                          sizes="(max-width: 768px) 200px, (max-width: 1024px) 250px, 200px"
+                          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 256px"
                           className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
-                      <div className="p-4 text-center flex-grow flex items-center justify-center">
-                        <h3 className="font-bold text-lg text-gray-900">{persona.name}</h3>
+                      <div className="p-3 sm:p-4 text-center flex-grow flex items-center justify-center">
+                        <h3 className="font-bold text-base sm:text-lg text-gray-900">{persona.name}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -372,17 +372,17 @@ export default function Personas() {
               </div>
             </div>
             
-            {/* Men Persona Description */}
+            {/* Men Persona Description - Mobile optimized */}
             {clickedMenPersona && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                className="mt-8"
+                className="mt-6 sm:mt-8"
               >
-                <div className="bg-white rounded-2xl shadow-lg p-6 max-w-4xl mx-auto">
-                  <div className="flex items-start gap-6">
-                    <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 max-w-4xl mx-auto">
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden flex-shrink-0">
                       <Image
                         src={clickedMenPersona.image}
                         alt={clickedMenPersona.name}
@@ -392,10 +392,10 @@ export default function Personas() {
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-bold text-xl text-gray-900 mb-2">
+                      <h3 className="font-bold text-lg sm:text-xl text-gray-900 mb-2">
                         {clickedMenPersona.name}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                         {clickedMenPersona.description}
                       </p>
                     </div>
@@ -405,33 +405,33 @@ export default function Personas() {
             )}
           </div>
 
-          {/* LGBTQ+ Personas Carousel */}
+          {/* LGBTQ+ Personas Carousel - Mobile optimized */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">LGBTQ+ Personas</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">LGBTQ+ Personas</h3>
             <div className="personas-carousel-container overflow-hidden relative">
-              {/* Arrow Buttons */}
+              {/* Arrow Buttons - Mobile optimized */}
               <button
                 onClick={() => scrollCarousel(lgbtqCarouselRef, 'left')}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll left"
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 onClick={() => scrollCarousel(lgbtqCarouselRef, 'right')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 border border-gray-200"
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll right"
               >
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
               
               <div 
                 ref={lgbtqCarouselRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide"
+                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide"
                 style={{ 
                   scrollbarWidth: 'none', 
                   msOverflowStyle: 'none',
@@ -444,7 +444,7 @@ export default function Personas() {
                 {[...personaCategories.lgbtq.personas, ...personaCategories.lgbtq.personas].map((persona, index) => (
                   <motion.div
                     key={`lgbtq-${persona.name}-${index}`}
-                    className="group cursor-pointer flex-shrink-0 w-64 staggered-card persona-card-clickable persona-click-hint"
+                    className="group cursor-pointer flex-shrink-0 w-48 sm:w-56 lg:w-64 staggered-card persona-card-clickable persona-click-hint touch-manipulation"
                     onClick={() => {
                       setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
                       setClickedLgbtqPersona({name: persona.name, description: persona.description, image: persona.image});
@@ -456,13 +456,13 @@ export default function Personas() {
                           src={persona.image}
                           alt={persona.name}
                           fill
-                          sizes="(max-width: 768px) 200px, (max-width: 1024px) 250px, 200px"
+                          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 256px"
                           className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
-                      <div className="p-4 text-center flex-grow flex items-center justify-center">
-                        <h3 className="font-bold text-lg text-gray-900">{persona.name}</h3>
+                      <div className="p-3 sm:p-4 text-center flex-grow flex items-center justify-center">
+                        <h3 className="font-bold text-base sm:text-lg text-gray-900">{persona.name}</h3>
                       </div>
                     </div>
                   </motion.div>
@@ -470,17 +470,17 @@ export default function Personas() {
               </div>
             </div>
             
-            {/* LGBTQ+ Persona Description */}
+            {/* LGBTQ+ Persona Description - Mobile optimized */}
             {clickedLgbtqPersona && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                className="mt-8"
+                className="mt-6 sm:mt-8"
               >
-                <div className="bg-white rounded-2xl shadow-lg p-6 max-w-4xl mx-auto">
-                  <div className="flex items-start gap-6">
-                    <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 max-w-4xl mx-auto">
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden flex-shrink-0">
                       <Image
                         src={clickedLgbtqPersona.image}
                         alt={clickedLgbtqPersona.name}
@@ -490,10 +490,10 @@ export default function Personas() {
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="font-bold text-xl text-gray-900 mb-2">
+                      <h3 className="font-bold text-lg sm:text-xl text-gray-900 mb-2">
                         {clickedLgbtqPersona.name}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                         {clickedLgbtqPersona.description}
                       </p>
                     </div>
@@ -504,17 +504,17 @@ export default function Personas() {
           </div>
         </motion.div>
 
-        {/* CTA Section */}
+        {/* CTA Section - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16"
         >
-          <h3 className="text-2xl font-bold mb-4 text-gray-900">Ready to Boost Your Revenue?</h3>
-          <p className="text-lg text-gray-600 mb-8">Choose your persona and start earning 10x more today!</p>
-          <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+          <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-900">Ready to Boost Your Revenue?</h3>
+          <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-2">Choose your persona and start earning 10x more today!</p>
+          <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg touch-manipulation">
             <span className="relative z-10">Get Started Now</span>
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>

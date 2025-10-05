@@ -76,29 +76,29 @@ export default function Pricing() {
         <div className="absolute inset-0 holographic-overlay"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 relative z-20">
+        {/* Section Header - Enhanced mobile optimization */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 sm:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent staggered-text">
               Simple, Transparent
             </span>
             <br />
             <span className="text-gray-800 staggered-text">Pricing</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto staggered-text">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto staggered-text px-4 leading-relaxed">
             Choose the plan that fits your needs. All plans include our core AI features and OnlyFans integration.
           </p>
         </motion.div>
 
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Pricing Cards - Enhanced mobile alignment */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -107,41 +107,41 @@ export default function Pricing() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
               className={`relative rounded-2xl border-2 ${plan.popular ? 'border-purple-300 bg-gradient-to-br from-purple-50 to-blue-50' : 'border-gray-200 bg-white/80'} backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col ${
-                plan.popular ? 'scale-105' : ''
-              }`}
+                plan.popular ? 'sm:scale-105 lg:scale-105' : ''
+              } ${index === 1 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
               style={{ 
-                minHeight: '500px'
+                minHeight: '420px'
               }}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center shadow-lg">
-                    <Star className="w-4 h-4 mr-1" />
+                <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center shadow-lg">
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                     Most Popular
                   </div>
                 </div>
               )}
               
-              <div className="p-8 flex flex-col h-full">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <p className="text-gray-600 mb-4">{plan.description}</p>
+              <div className="p-5 sm:p-6 lg:p-8 flex flex-col h-full">
+                <div className="text-center mb-6 sm:mb-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-5">{plan.description}</p>
                   <div className="flex items-baseline justify-center">
-                    <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
-                    <span className="text-gray-600 ml-1">{plan.period}</span>
+                    <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-sm sm:text-base text-gray-600 ml-1">{plan.period}</span>
                   </div>
                 </div>
 
-                <ul className="space-y-4 mb-8 flex-grow">
+                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
-                      <Check className="w-5 h-5 text-cp-green mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                    <li key={featureIndex} className="flex items-start">
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-cp-green mr-3 sm:mr-4 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm sm:text-base text-gray-700 leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <button className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 mt-auto ${
+                <button className={`w-full py-3.5 sm:py-4 px-4 sm:px-6 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 mt-auto touch-manipulation ${
                   plan.popular
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg transform hover:scale-105'
                     : 'bg-white text-purple-600 border-2 border-purple-200 hover:bg-purple-50 hover:border-purple-300'
@@ -153,37 +153,37 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Free Trial CTA */}
+        {/* Free Trial CTA - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16"
         >
-          <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-2xl p-8 text-white shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4">7 Day Free Trial</h3>
-            <p className="text-lg mb-6">
+          <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-2xl p-4 sm:p-6 lg:p-8 text-white shadow-2xl">
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">7 Day Free Trial</h3>
+            <p className="text-base sm:text-lg mb-4 sm:mb-6">
               Experience the benefits with our 7 day free trial.
               <br />
               <strong>No Credit Card Required!</strong>
             </p>
-            <button className="bg-white text-purple-600 font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <button className="bg-white text-purple-600 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto text-base sm:text-lg touch-manipulation">
               Start Free Trial
             </button>
           </div>
         </motion.div>
 
-        {/* Revenue Stats */}
+        {/* Revenue Stats - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16"
         >
-          <h3 className="text-2xl font-bold mb-4">Our users see a 10x increase in revenue!</h3>
-          <p className="text-lg text-gray-600">Join thousands of creators already boosting their revenue with our AI</p>
+          <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Our users see a 10x increase in revenue!</h3>
+          <p className="text-base sm:text-lg text-gray-600 px-2">Join thousands of creators already boosting their revenue with our AI</p>
         </motion.div>
       </div>
     </section>

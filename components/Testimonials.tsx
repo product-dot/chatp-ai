@@ -58,29 +58,29 @@ export default function Testimonials() {
         <div className="absolute inset-0 holographic-overlay"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 relative z-20">
+        {/* Section Header - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent staggered-text">
               What Our Users
             </span>
             <br />
             <span className="text-gray-800 staggered-text">Say</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto staggered-text">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto staggered-text px-2">
             Join thousands of creators who have already transformed their revenue with ChatPersona AI
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {/* Testimonials Grid - Mobile optimized */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -88,21 +88,21 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              {/* Rating */}
-              <div className="flex items-center mb-4">
+              {/* Rating - Mobile optimized */}
+              <div className="flex items-center mb-3 sm:mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
 
-              {/* Content */}
-              <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+              {/* Content - Mobile optimized */}
+              <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 italic leading-relaxed">"{testimonial.content}"</p>
 
-              {/* Author */}
+              {/* Author - Mobile optimized */}
               <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 sm:mr-4 flex-shrink-0">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -112,15 +112,15 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  <div className="font-bold text-sm sm:text-base text-gray-900">{testimonial.name}</div>
+                  <div className="text-xs sm:text-sm text-gray-600">{testimonial.role}</div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Stats Section */}
+        {/* Stats Section - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,22 +128,22 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-200">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
               2,345 creators are already boosting their revenue with our AI!
             </h3>
-            <div className="flex justify-center items-center space-x-8 mt-8">
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 lg:space-x-8 mt-6 sm:mt-8">
               <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">10x</div>
-                <div className="text-gray-600">Revenue Increase</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">10x</div>
+                <div className="text-sm sm:text-base text-gray-600">Revenue Increase</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">5x</div>
-                <div className="text-gray-600">More Tips</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">5x</div>
+                <div className="text-sm sm:text-base text-gray-600">More Tips</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">2,345</div>
-                <div className="text-gray-600">Active Creators</div>
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">2,345</div>
+                <div className="text-sm sm:text-base text-gray-600">Active Creators</div>
               </div>
             </div>
           </div>

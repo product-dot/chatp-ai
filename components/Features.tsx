@@ -1,6 +1,8 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { useState } from 'react';
 import { 
   TrendingUp, 
   DollarSign, 
@@ -18,8 +20,6 @@ import {
   GraduationCap,
   Languages
 } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
 
 export default function Features() {
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
@@ -640,7 +640,7 @@ export default function Features() {
               <div className="space-y-1 text-xs text-gray-500">
                 <div className="flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
-                  No credit card required
+                  Quick setup
                 </div>
                 <div className="flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
@@ -661,15 +661,15 @@ export default function Features() {
                 3
               </div>
               <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">Connect Account</h4>
-              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">Link your OnlyFans account and configure your preferences</p>
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">Sign in to your OnlyFans Account and click on the extension</p>
               <div className="space-y-1 text-xs text-gray-600">
                 <div className="flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-cp-orange rounded-full mr-2"></div>
-                  Connect OnlyFans
+                  Sign in to OnlyFans
                 </div>
                 <div className="flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-cp-orange rounded-full mr-2"></div>
-                  Set preferences
+                  Click on extension
                 </div>
               </div>
             </motion.div>
@@ -712,10 +712,10 @@ export default function Features() {
             viewport={{ once: true }}
             className="text-center mt-8 sm:mt-12"
           >
-            <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 sm:px-12 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mb-3 sm:mb-4 w-full sm:w-auto text-base sm:text-lg touch-manipulation">
+            <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 sm:px-12 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mb-3 sm:mb-4 w-full sm:w-auto text-base sm:text-lg touch-manipulation inline-block text-center">
               <span className="relative z-10">Start Your Free Trial Now</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
+            </a>
             <p className="text-gray-500 text-xs sm:text-sm">Join thousands of creators already earning more with AI</p>
           </motion.div>
         </motion.div>
@@ -735,8 +735,14 @@ export default function Features() {
               "ChatPersona AI completely transformed my revenue. I went from making $500/month to over $5,000/month in just 3 months. The AI responses are so natural, my subscribers can't tell the difference!"
             </blockquote>
             <div className="flex items-center justify-center space-x-3 sm:space-x-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cp-purple rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm sm:text-base">S</span>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0">
+                <Image
+                  src="/sarah.jpg"
+                  alt="Sarah M"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="text-left">
                 <div className="font-bold text-gray-900 text-sm sm:text-base">Sarah M.</div>

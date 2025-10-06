@@ -131,11 +131,11 @@ export default function DemoSection() {
             transition={{ duration: 0.6, delay: 1.6 }}
             viewport={{ once: true }}
           >
-            <button className="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-block text-center">
               <span className="relative z-10">Try It Now - Free Trial</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            <p className="text-gray-500 text-sm mt-3">No credit card required • 7-day free trial</p>
+            </a>
+            <p className="text-gray-500 text-sm mt-3">7-day free trial</p>
           </motion.div>
           </motion.div>
         </motion.div>

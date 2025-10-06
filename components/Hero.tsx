@@ -60,6 +60,18 @@ export default function Hero() {
           className="space-y-4 sm:space-y-8"
         >
 
+          {/* Tag - 10x more human */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-4 sm:mb-6"
+          >
+            <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm sm:text-base font-semibold px-4 py-2 rounded-full shadow-lg">
+              10x more human than traditional chatbots
+            </span>
+          </motion.div>
+
           {/* Main Headline - Enhanced mobile boldness */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -81,8 +93,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2 font-bold sm:font-normal"
           >
-            Transform your content strategy with intelligent AI that works 24/7. 
-            <span className="font-black sm:font-semibold text-purple-600">10x more human</span> than traditional chatbots.
+            Transform your content strategy with intelligent AI that works 24/7.
           </motion.p>
 
           {/* CTA Buttons - Mobile optimized */}
@@ -92,13 +103,13 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
           >
-            <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg touch-manipulation">
+            <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg touch-manipulation">
               <span className="relative z-10">Start Free Trial</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            <button className="bg-white/80 backdrop-blur-sm text-purple-600 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-purple-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-white w-full sm:w-auto text-base sm:text-lg touch-manipulation">
-              View Demo
-            </button>
+            </a>
+            <a href="https://chromewebstore.google.com/detail/ai-chat-tool-chatpersona/bgefplnmcbmcfjmggpjiadldmfiiecma?hl=en&authuser=0" target="_blank" rel="noopener noreferrer" className="bg-white/80 backdrop-blur-sm text-purple-600 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-purple-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-white w-full sm:w-auto text-base sm:text-lg touch-manipulation">
+              Get Extension
+            </a>
           </motion.div>
 
           {/* Creator Carousel - Mobile optimized */}

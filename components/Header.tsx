@@ -54,15 +54,16 @@ export default function Header() {
             <a href="#personas" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Personas</a>
             <a href="#pricing" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Pricing</a>
             <a href="#testimonials" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Testimonials</a>
+            <a href="https://form.typeform.com/to/m0p8jU1z?typeform-source=takedownsai.typeform.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">For Agencies</a>
           </nav>
 
           {/* CTA Buttons - Hidden on mobile, shown on desktop */}
           <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
-            <button className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Login</button>
-            <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-4 xl:px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm xl:text-base">
+            <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Login</a>
+            <a href="https://chromewebstore.google.com/detail/ai-chat-tool-chatpersona/bgefplnmcbmcfjmggpjiadldmfiiecma?hl=en&authuser=0" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-4 xl:px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm xl:text-base">
               <span className="relative z-10">Get Extension</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button - Enhanced for better mobile UX */}
@@ -115,17 +116,26 @@ export default function Header() {
               >
                 Testimonials
               </a>
+              <a 
+                href="https://form.typeform.com/to/m0p8jU1z?typeform-source=takedownsai.typeform.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                For Agencies
+              </a>
               <div className="flex flex-col space-y-3 pt-6 border-t border-gray-200/50">
-                <button className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-left text-lg touch-manipulation border border-transparent hover:border-purple-200">
+                <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-left text-lg touch-manipulation border border-transparent hover:border-purple-200">
                   Login
-                </button>
-                <button className="relative group bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 text-white font-bold px-8 py-4 rounded-xl w-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg touch-manipulation">
+                </a>
+                <a href="https://chromewebstore.google.com/detail/ai-chat-tool-chatpersona/bgefplnmcbmcfjmggpjiadldmfiiecma?hl=en&authuser=0" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 text-white font-bold px-8 py-4 rounded-xl w-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg touch-manipulation">
                   <span className="relative z-10 flex items-center justify-center">
                     Get Extension
                     <span className="ml-2 text-sm">🚀</span>
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
+                </a>
               </div>
             </nav>
           </div>

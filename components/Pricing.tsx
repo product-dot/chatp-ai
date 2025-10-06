@@ -141,13 +141,13 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <button className={`w-full py-3.5 sm:py-4 px-4 sm:px-6 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 mt-auto touch-manipulation ${
+                <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className={`w-full py-3.5 sm:py-4 px-4 sm:px-6 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 mt-auto touch-manipulation inline-block text-center ${
                   plan.popular
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg transform hover:scale-105'
                     : 'bg-white text-purple-600 border-2 border-purple-200 hover:bg-purple-50 hover:border-purple-300'
                 }`}>
                   {plan.cta}
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}
@@ -165,12 +165,10 @@ export default function Pricing() {
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">7 Day Free Trial</h3>
             <p className="text-base sm:text-lg mb-4 sm:mb-6">
               Experience the benefits with our 7 day free trial.
-              <br />
-              <strong>No Credit Card Required!</strong>
             </p>
-            <button className="bg-white text-purple-600 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto text-base sm:text-lg touch-manipulation">
+            <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="bg-white text-purple-600 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto text-base sm:text-lg touch-manipulation inline-block text-center">
               Start Free Trial
-            </button>
+            </a>
           </div>
         </motion.div>
 

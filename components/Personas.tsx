@@ -514,10 +514,10 @@ export default function Personas() {
         >
           <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-900">Ready to Boost Your Revenue?</h3>
           <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-2">Choose your persona and start earning 10x more today!</p>
-          <button className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg touch-manipulation">
+          <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg touch-manipulation inline-block text-center">
             <span className="relative z-10">Get Started Now</span>
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
+          </a>
         </motion.div>
       </div>
 

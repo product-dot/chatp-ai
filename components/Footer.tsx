@@ -17,8 +17,13 @@ export default function Footer() {
               Boost your revenue with AI-powered personas that engage your audience and increase your earnings by 10x.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <button className="btn-primary text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6 w-full sm:w-auto">Get Extension</button>
-              <button className="btn-secondary text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6 w-full sm:w-auto">Sign Up</button>
+              <a href="https://chromewebstore.google.com/detail/ai-chat-tool-chatpersona/bgefplnmcbmcfjmggpjiadldmfiiecma?hl=en&authuser=0" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-sm sm:text-base touch-manipulation">
+                <span className="relative z-10">Get Extension</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
+              <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="bg-white/80 backdrop-blur-sm text-purple-600 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-purple-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-white w-full sm:w-auto text-sm sm:text-base touch-manipulation">
+                Sign Up
+              </a>
             </div>
           </div>
 
@@ -37,10 +42,7 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Support</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-              <li><a href="#" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="mailto:support@chatpersona.ai" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">support@chatpersona.ai</a></li>
             </ul>
           </div>
         </div>
@@ -54,13 +56,8 @@ export default function Footer() {
           className="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center"
         >
           <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left mb-3 sm:mb-0">
-            © 2024 ChatPersonas.ai. All rights reserved.
+            © 2024 ChatPersona AI. All rights reserved.
           </p>
-          <div className="flex space-x-4 sm:space-x-6">
-            <a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Instagram</a>
-            <a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Discord</a>
-          </div>
         </motion.div>
       </div>
     </footer>

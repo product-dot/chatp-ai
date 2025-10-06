@@ -401,7 +401,11 @@ export default function Features() {
                 transition={{ duration: 0.8, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 className="group relative bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 text-center cursor-pointer hover:border-purple-300/50 h-fit touch-manipulation"
-                style={{ minHeight: '200px' }}
+                style={{ 
+                  minHeight: '200px',
+                  transformStyle: "preserve-3d",
+                  perspective: "1000px"
+                }}
                 whileHover={{ 
                   rotateY: 3,
                   rotateX: 3,
@@ -413,10 +417,6 @@ export default function Features() {
                   e.preventDefault();
                   e.stopPropagation();
                   toggleCard(index);
-                }}
-                style={{ 
-                  transformStyle: "preserve-3d",
-                  perspective: "1000px"
                 }}
                 layout
               >

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,11 +31,11 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/98 backdrop-blur-lg border-b border-gray-200/50 shadow-xl">
+    <header className="fixed top-0 w-full z-50 bg-white/98 backdrop-blur-lg border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 sm:py-5">
           {/* Logo - Enhanced for mobile impact */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
+          <Link href="/" className="flex items-center space-x-3 sm:space-x-4 hover:opacity-80 transition-opacity duration-300">
             <div className="relative group">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-xl group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110">
                 😈
@@ -46,14 +47,15 @@ export default function Header() {
               <span className="font-bold text-xl sm:text-2xl text-gray-900 leading-tight">ChatPersona AI</span>
               <span className="text-xs sm:text-sm text-gray-500 font-medium">AI-Powered Conversations</span>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            <a href="#features" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Features</a>
-            <a href="#personas" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Personas</a>
-            <a href="#pricing" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Pricing</a>
-            <a href="#testimonials" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Testimonials</a>
+            <a href="/#features" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Features</a>
+            <a href="/#personas" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Personas</a>
+            <a href="/#pricing" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Pricing</a>
+            <a href="/blogs" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Blog</a>
+            <a href="/#testimonials" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">Testimonials</a>
             <a href="https://form.typeform.com/to/m0p8jU1z?typeform-source=takedownsai.typeform.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base">For Agencies</a>
           </nav>
 
@@ -68,9 +70,10 @@ export default function Header() {
 
           {/* Mobile Menu Button - Enhanced for better mobile UX */}
           <button
-            className="lg:hidden p-3 -mr-3 rounded-xl hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 transition-all duration-300 group"
+            className="lg:hidden p-3 -mr-3 rounded-xl hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 transition-all duration-300 group touch-manipulation"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle mobile menu"
+            style={{ minWidth: '44px', minHeight: '44px' }}
           >
             <div className="relative">
               {isMenuOpen ? (
@@ -89,30 +92,42 @@ export default function Header() {
           <div className="py-6 border-t border-gray-200/50 bg-gradient-to-b from-white to-gray-50/50">
             <nav className="flex flex-col space-y-2">
               <a 
-                href="#features" 
-                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200"
+                href="/#features" 
+                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200 block w-full text-left"
                 onClick={() => setIsMenuOpen(false)}
+                style={{ minHeight: '48px' }}
               >
                 Features
               </a>
               <a 
-                href="#personas" 
-                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200"
+                href="/#personas" 
+                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200 block w-full text-left"
                 onClick={() => setIsMenuOpen(false)}
+                style={{ minHeight: '48px' }}
               >
                 Personas
               </a>
               <a 
-                href="#pricing" 
-                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200"
+                href="/#pricing" 
+                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200 block w-full text-left"
                 onClick={() => setIsMenuOpen(false)}
+                style={{ minHeight: '48px' }}
               >
                 Pricing
               </a>
               <a 
-                href="#testimonials" 
-                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200"
+                href="/blogs" 
+                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200 block w-full text-left"
                 onClick={() => setIsMenuOpen(false)}
+                style={{ minHeight: '48px' }}
+              >
+                Blog
+              </a>
+              <a 
+                href="/#testimonials" 
+                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200 block w-full text-left"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ minHeight: '48px' }}
               >
                 Testimonials
               </a>
@@ -120,16 +135,17 @@ export default function Header() {
                 href="https://form.typeform.com/to/m0p8jU1z?typeform-source=takedownsai.typeform.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200"
+                className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-lg touch-manipulation border border-transparent hover:border-purple-200 block w-full text-left"
                 onClick={() => setIsMenuOpen(false)}
+                style={{ minHeight: '48px' }}
               >
                 For Agencies
               </a>
               <div className="flex flex-col space-y-3 pt-6 border-t border-gray-200/50">
-                <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-left text-lg touch-manipulation border border-transparent hover:border-purple-200">
+                <a href="https://app.chatpersona.ai/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 px-5 py-4 rounded-xl transition-all duration-300 font-semibold text-left text-lg touch-manipulation border border-transparent hover:border-purple-200 block w-full" style={{ minHeight: '48px' }}>
                   Login
                 </a>
-                <a href="https://chromewebstore.google.com/detail/ai-chat-tool-chatpersona/bgefplnmcbmcfjmggpjiadldmfiiecma?hl=en&authuser=0" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 text-white font-bold px-8 py-4 rounded-xl w-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg touch-manipulation">
+                <a href="https://chromewebstore.google.com/detail/ai-chat-tool-chatpersona/bgefplnmcbmcfjmggpjiadldmfiiecma?hl=en&authuser=0" target="_blank" rel="noopener noreferrer" className="relative group bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 text-white font-bold px-8 py-4 rounded-xl w-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg touch-manipulation" style={{ minHeight: '56px' }}>
                   <span className="relative z-10 flex items-center justify-center">
                     Get Extension
                     <span className="ml-2 text-sm">🚀</span>

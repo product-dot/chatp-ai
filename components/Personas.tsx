@@ -17,15 +17,21 @@ export default function Personas() {
 
   // Auto-play state
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Carousel control functions
   const scrollCarousel = (carouselRef: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
     if (carouselRef.current) {
       const scrollAmount = 300; // Adjust scroll distance
       const currentScroll = carouselRef.current.scrollLeft;
-      const newScroll = direction === 'left' 
-        ? currentScroll - scrollAmount 
-        : currentScroll + scrollAmount;
+      const maxScroll = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
+      
+      let newScroll;
+      if (direction === 'left') {
+        newScroll = Math.max(0, currentScroll - scrollAmount);
+      } else {
+        newScroll = Math.min(maxScroll, currentScroll + scrollAmount);
+      }
       
       carouselRef.current.scrollTo({
         left: newScroll,
@@ -36,7 +42,7 @@ export default function Personas() {
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || isHovering) return;
 
     const autoScroll = (carouselRef: React.RefObject<HTMLDivElement>) => {
       if (carouselRef.current) {
@@ -78,7 +84,7 @@ export default function Personas() {
 
     const interval = setInterval(scrollAllCarousels, 3000); // Auto-scroll every 3 seconds
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, isHovering]);
 
 
   const personaCategories = {
@@ -215,18 +221,28 @@ export default function Personas() {
             <div className="personas-carousel-container overflow-hidden relative">
               {/* Arrow Buttons - Mobile optimized */}
               <button
-                onClick={() => scrollCarousel(womenCarouselRef, 'left')}
-                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollCarousel(womenCarouselRef, 'left');
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll left"
+                style={{ minWidth: '44px', minHeight: '44px' }}
               >
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
-                onClick={() => scrollCarousel(womenCarouselRef, 'right')}
-                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollCarousel(womenCarouselRef, 'right');
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll right"
+                style={{ minWidth: '44px', minHeight: '44px' }}
               >
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -235,15 +251,18 @@ export default function Personas() {
               
               <div 
                 ref={womenCarouselRef}
-                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide"
+                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide mobile-scroll"
                 style={{ 
                   scrollbarWidth: 'none', 
                   msOverflowStyle: 'none',
                   width: '100%',
-                  maxWidth: '100%'
+                  maxWidth: '100%',
+                  touchAction: 'pan-x'
                 }}
-                onMouseEnter={() => setIsAutoPlaying(false)}
-                onMouseLeave={() => setIsAutoPlaying(true)}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+                onTouchStart={() => setIsHovering(true)}
+                onTouchEnd={() => setIsHovering(false)}
               >
                 {[...personaCategories.women.personas, ...personaCategories.women.personas].map((persona, index) => (
                   <motion.div
@@ -253,6 +272,8 @@ export default function Personas() {
                       setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
                       setClickedWomenPersona({name: persona.name, description: persona.description, image: persona.image});
                     }}
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
                   >
                     <div className="relative overflow-hidden rounded-2xl futuristic-card depth-card h-full flex flex-col">
                       <div className="aspect-square relative flex-shrink-0">
@@ -262,8 +283,14 @@ export default function Personas() {
                           fill
                           sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 256px"
                           className="object-cover"
+                          onMouseEnter={() => setIsHovering(true)}
+                          onMouseLeave={() => setIsHovering(false)}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div 
+                          className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          onMouseEnter={() => setIsHovering(true)}
+                          onMouseLeave={() => setIsHovering(false)}
+                        />
                       </div>
                       <div className="p-3 sm:p-4 text-center flex-grow flex items-center justify-center">
                         <h3 className="font-bold text-base sm:text-lg text-gray-900">{persona.name}</h3>
@@ -313,18 +340,28 @@ export default function Personas() {
             <div className="personas-carousel-container overflow-hidden relative">
               {/* Arrow Buttons - Mobile optimized */}
               <button
-                onClick={() => scrollCarousel(menCarouselRef, 'left')}
-                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollCarousel(menCarouselRef, 'left');
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll left"
+                style={{ minWidth: '44px', minHeight: '44px' }}
               >
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
-                onClick={() => scrollCarousel(menCarouselRef, 'right')}
-                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollCarousel(menCarouselRef, 'right');
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll right"
+                style={{ minWidth: '44px', minHeight: '44px' }}
               >
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -333,15 +370,18 @@ export default function Personas() {
               
               <div 
                 ref={menCarouselRef}
-                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide"
+                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide mobile-scroll"
                 style={{ 
                   scrollbarWidth: 'none', 
                   msOverflowStyle: 'none',
                   width: '100%',
-                  maxWidth: '100%'
+                  maxWidth: '100%',
+                  touchAction: 'pan-x'
                 }}
-                onMouseEnter={() => setIsAutoPlaying(false)}
-                onMouseLeave={() => setIsAutoPlaying(true)}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+                onTouchStart={() => setIsHovering(true)}
+                onTouchEnd={() => setIsHovering(false)}
               >
                 {[...personaCategories.men.personas, ...personaCategories.men.personas].map((persona, index) => (
                   <motion.div
@@ -351,6 +391,8 @@ export default function Personas() {
                       setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
                       setClickedMenPersona({name: persona.name, description: persona.description, image: persona.image});
                     }}
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
                   >
                     <div className="relative overflow-hidden rounded-2xl futuristic-card depth-card h-full flex flex-col">
                       <div className="aspect-square relative flex-shrink-0">
@@ -360,8 +402,14 @@ export default function Personas() {
                           fill
                           sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 256px"
                           className="object-cover"
+                          onMouseEnter={() => setIsHovering(true)}
+                          onMouseLeave={() => setIsHovering(false)}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div 
+                          className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          onMouseEnter={() => setIsHovering(true)}
+                          onMouseLeave={() => setIsHovering(false)}
+                        />
                       </div>
                       <div className="p-3 sm:p-4 text-center flex-grow flex items-center justify-center">
                         <h3 className="font-bold text-base sm:text-lg text-gray-900">{persona.name}</h3>
@@ -411,18 +459,28 @@ export default function Personas() {
             <div className="personas-carousel-container overflow-hidden relative">
               {/* Arrow Buttons - Mobile optimized */}
               <button
-                onClick={() => scrollCarousel(lgbtqCarouselRef, 'left')}
-                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollCarousel(lgbtqCarouselRef, 'left');
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll left"
+                style={{ minWidth: '44px', minHeight: '44px' }}
               >
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
-                onClick={() => scrollCarousel(lgbtqCarouselRef, 'right')}
-                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollCarousel(lgbtqCarouselRef, 'right');
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 border border-gray-200 touch-manipulation"
                 aria-label="Scroll right"
+                style={{ minWidth: '44px', minHeight: '44px' }}
               >
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -431,15 +489,18 @@ export default function Personas() {
               
               <div 
                 ref={lgbtqCarouselRef}
-                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide"
+                className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide mobile-scroll"
                 style={{ 
                   scrollbarWidth: 'none', 
                   msOverflowStyle: 'none',
                   width: '100%',
-                  maxWidth: '100%'
+                  maxWidth: '100%',
+                  touchAction: 'pan-x'
                 }}
-                onMouseEnter={() => setIsAutoPlaying(false)}
-                onMouseLeave={() => setIsAutoPlaying(true)}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+                onTouchStart={() => setIsHovering(true)}
+                onTouchEnd={() => setIsHovering(false)}
               >
                 {[...personaCategories.lgbtq.personas, ...personaCategories.lgbtq.personas].map((persona, index) => (
                   <motion.div
@@ -449,6 +510,8 @@ export default function Personas() {
                       setSelectedPersona({name: persona.name, description: persona.description, image: persona.image});
                       setClickedLgbtqPersona({name: persona.name, description: persona.description, image: persona.image});
                     }}
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
                   >
                     <div className="relative overflow-hidden rounded-2xl futuristic-card depth-card h-full flex flex-col">
                       <div className="aspect-square relative flex-shrink-0">
@@ -458,8 +521,14 @@ export default function Personas() {
                           fill
                           sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 256px"
                           className="object-cover"
+                          onMouseEnter={() => setIsHovering(true)}
+                          onMouseLeave={() => setIsHovering(false)}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div 
+                          className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          onMouseEnter={() => setIsHovering(true)}
+                          onMouseLeave={() => setIsHovering(false)}
+                        />
                       </div>
                       <div className="p-3 sm:p-4 text-center flex-grow flex items-center justify-center">
                         <h3 className="font-bold text-base sm:text-lg text-gray-900">{persona.name}</h3>

@@ -127,9 +127,12 @@ export default function Hero() {
             </div>
             
             <div 
-              className="carousel-container w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-5xl overflow-hidden"
+              className="carousel-container w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-5xl overflow-hidden mobile-scroll"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
+              onTouchStart={() => setIsHovered(true)}
+              onTouchEnd={() => setIsHovered(false)}
+              style={{ touchAction: 'pan-x' }}
             >
               <div className="creator-carousel flex gap-3 sm:gap-4 w-max">
                 {/* All women creators */}

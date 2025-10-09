@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description: 'AI-powered personas that engage your audience and increase your earnings by 10x. Perfect for OnlyFans creators and content creators.',
   keywords: 'AI, OnlyFans, content creators, revenue, automation, personas',
   authors: [{ name: 'ChatPersona AI' }],
+  icons: {
+    icon: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😈</text></svg>',
+    shortcut: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😈</text></svg>',
+    apple: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😈</text></svg>',
+  },
   openGraph: {
     title: 'ChatPersona AI - Boost Your Revenue 10x',
     description: 'AI-powered personas that engage your audience and increase your earnings by 10x.',

@@ -43,6 +43,24 @@ export default function BlogPostComponent({ slug }: BlogPostProps) {
         className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 py-16 sm:py-20"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Back Button */}
+          <div className="mb-6">
+            <Link
+              href="/blogs"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300 group"
+            >
+              <svg 
+                className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span className="text-sm font-medium">Back to Blogs</span>
+            </Link>
+          </div>
+          
           <div className="flex items-center gap-4 mb-6">
             <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
               {post.category}

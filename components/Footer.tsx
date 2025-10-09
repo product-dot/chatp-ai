@@ -31,10 +31,10 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#features" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Features</a></li>
-              <li><a href="#personas" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Personas</a></li>
-              <li><a href="#pricing" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="#testimonials" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="/#features" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Features</a></li>
+              <li><a href="/#personas" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Personas</a></li>
+              <li><a href="/#pricing" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+              <li><a href="/#testimonials" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
             </ul>
           </div>
 

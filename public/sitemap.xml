@@ -52,7 +52,6 @@
     <priority>0.7</priority>
   </url>
   
-  <!-- New blog posts -->
   <url>
     <loc>https://chatpersona.ai/blog/ai-chatbot-security-privacy-protecting-creator-data-2025</loc>
     <lastmod>2025-09-28</lastmod>
@@ -75,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://chatpersona.ai/blog/subscription-economy-2-0-creators-building-sustainable-revenue-tiered-ai-services</loc>
+    <loc>https://chatpersona.ai/blog/ai-powered-chatbots-revolutionizing-onlyfans-revenue-complete-guide</loc>
     <lastmod>2025-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
